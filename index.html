@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Completa con Parallax Scrolling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul id="navbar"></ul>
+    </nav>
+
+    <!-- Sección 1: Inicio -->
+    <div id="inicio" class="parallax-section">
+        <div class="content">
+            <h1 id="inicio-title"></h1>
+            <p id="inicio-description"></p>
+        </div>
+    </div>
+
+    <!-- Sección 2: Nosotros -->
+    <div id="nosotros" class="content-section">
+        <h2 id="nosotros-title"></h2>
+        <p id="nosotros-description"></p>
+        <div id="nosotros-grid" class="grid-container"></div>
+        <p id="nosotros-detalle"></p>
+    </div>
+
+    <!-- Sección 3: Servicios -->
+    <div id="servicios" class="parallax-section">
+        <div class="content">
+            <h2 id="servicios-title"></h2>
+            <p id="servicios-description"></p>
+        </div>
+    </div>
+    <div class="map-container">
+        <iframe id="map-frame"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- Sección 4: Portfolio -->
+    <div id="portfolio" class="parallax-section">
+        <div class="content">
+            <h2 id="portfolio-title"></h2>
+            <p id="portfolio-description"></p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div id="portfolio-grid" class="portfolio-grid"></div>
+    </div>
+
+    <!-- Sección 5: Contacto -->
+    <div id="contacto" class="parallax-section">
+        <div class="content">
+            <h2 id="contacto-title"></h2>
+            <p id="contacto-description"></p>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        
+    
+        <form class="contact-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+    
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p id="footer-text"></p>
+    </footer>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p id="footer-text"></p>
+    </footer>
+
+    <!-- Script para cargar el JSON -->
+    <script>
+        // Cargar el JSON y actualizar el DOM
+        fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Navbar
+            const navbar = document.getElementById('navbar');
+            data.navbar.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = item.link;
+                a.textContent = item.name;
+                li.appendChild(a);
+                navbar.appendChild(li);
+            });
+
+            // Sección Inicio
+            document.getElementById('inicio-title').textContent = data.inicio.title;
+            document.getElementById('inicio-description').textContent = data.inicio.description;
+            document.getElementById('inicio').style.backgroundImage = `url(${data.inicio.background})`;
+
+            // Sección Nosotros
+            document.getElementById('nosotros-title').textContent = data.nosotros.title;
+            document.getElementById('nosotros-description').textContent = data.nosotros.description;
+            document.getElementById('nosotros-detalle').textContent = data.nosotros.detalle;
+            const nosotrosGrid = document.getElementById('nosotros-grid');
+            data.nosotros.grid.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('grid-item');
+                div.innerHTML = `<h3>${item.title}</h3><p>${item.description}</p>`;
+                nosotrosGrid.appendChild(div);
+            });
+
+            // Sección Servicios
+            document.getElementById('servicios-title').textContent = data.servicios.title;
+            document.getElementById('servicios-description').textContent = data.servicios.description;
+            document.getElementById('servicios').style.backgroundImage = `url(${data.servicios.background})`;
+            document.getElementById('map-frame').src = data.servicios.map.src
+
+
+            // Sección Portfolio
+            document.getElementById('portfolio-title').textContent = data.portfolio.title;
+            document.getElementById('portfolio-description').textContent = data.portfolio.description;
+            document.getElementById('portfolio').style.backgroundImage = `url(${data.portfolio.background})`;
+
+            const portfolioGrid = document.getElementById('portfolio-grid');
+            data.portfolio.projects.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('portfolio-item');
+                div.innerHTML = `<img src="${item.image}" alt="${item.title}"><h3>${item.title}</h3><p>${item.description}</p>`;
+                portfolioGrid.appendChild(div);
+            });
+
+            // Sección Contacto
+            document.getElementById('contacto-title').textContent = data.contacto.title;
+            document.getElementById('contacto-description').textContent = data.contacto.description;
+            document.getElementById('contacto').style.backgroundImage = `url(${data.contacto.background})`;
+
+            // Footer
+            document.getElementById('footer-text').textContent = data.footer.text;
+        })
+        .catch(error => console.error('Error al cargar el JSON:', error));
+    </script>
+</body>
+</html>
