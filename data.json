@@ -1,43 +1,52 @@
 {
     "navbar": [
-        {"name": "Inicio", "link": "#inicio"},
-        {"name": "Nosotros", "link": "#nosotros"},
-        {"name": "Servicios", "link": "#servicios"},
-        {"name": "Portfolio", "link": "#portfolio"},
-        {"name": "Contacto", "link": "#contacto"}
+        {"name": "Home", "link": "#home"},
+        {"name": "Offer", "link": "#offer"},
+        {"name": "Fotos", "link": "#fotos"},
+        {"name": "Conditions", "link": "#conditions"},
+        {"name": "Contact", "link": "#contact"}
     ],
-    "inicio": {
+    "home": {
         "title": "Orosei",
         "description": "El mejor lugar de vacaciones",
         "background": "https://img2.rtve.es/i/?w=1600&i=1626274600754.jpg"
     },
-    "nosotros": {
-        "title": "Comodidades",
-        "description": "Reglas y comididades",
+    "offer": {
+        "title": "What this place offers",
+        "description": "",
         "grid": [
-            {"title": "No masconas", "description": "Nuestra misión"},
-            {"title": "TV", "description": "Nuestra visión"},
-            {"title": "Aire acondicionado", "description": "Nuestra visión"},
-            {"title": "Piscona", "description": "Nuestra visión"},
-            {"title": "Parking 2 plazas", "description": "Nuestra visión"},
-            {"title": "Terraza 255m", "description": "Nuestra visión"},
-            {"title": "3 camas", "description": "Nuestra visión"},
-            {"title": "NO fumar", "description": "Nuestra visión"},
-            {"title": "No fiestas", "description": "Este establecimiento no permite fietas  "}
+            {"title": "Lock on bedroom door", "description": "Nuestra misión"},
+            {"title": "Wifi", "description": "Ask to admin"},
+            {"title": "Free parking", "description": "Up to 2 places"},
+            {"title": "Air Conditioning", "description": ""},
+            {"title": "No smoke alarm", "description": ""},
+            {"title": "Wine glasses", "description": ""},
+            {"title": "BBQ grill", "description": ""},
+            {"title": "Hot Watter", "description": ""}
         ],
-        "detalle": "Lorem Ipsum es simplementen \n el \n texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum."
-    },
-    "servicios": {
-        "title": "Anitguos Huespedes",
-        "description": "Valoraciones de nuestro huespedes",
-        "background": "https://perderelrumbo.com/wp-content/uploads/2020/01/rutas-cala-gonone-post-blog-golfo-de-orosei-cerde%C3%B1a.jpg",
+        "detail": "Lorem Ipsum es simplementen \n el \n texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas, las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.",
         "map": {
             "src": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d754.2873934808273!2d9.651955669596457!3d40.86859161237072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12deccb6e04f2593%3A0xa17daeefb87151b5!2sVia%20Lattea%2C%2007020%20Costa%20Dorata%20SS%2C%20Italia!5e0!3m2!1ses!2ses!4v1724229925526!5m2!1ses!2ses"
         }
     },
-    "portfolio": {
-        "title": "Portfolio",
-        "description": "Nuestros proyectos",
+    "conditions": {
+        "title": "Conditions and Rules",
+        "description": "",
+        "background": "https://perderelrumbo.com/wp-content/uploads/2020/01/rutas-cala-gonone-post-blog-golfo-de-orosei-cerde%C3%B1a.jpg",
+        "services": [
+            {"title": "Cycling", "description": "The most elegant aver you have"},
+            {"title": "Drifting", "description": "Shark maint"},
+            {"title": "Enjoy the beach", "description": "The most intelligent employer"},
+            {"title": "Drifting", "description": "Shark maint"},
+            {"title": "Enjoy the beach", "description": "The most intelligent employer"},
+            {"title": "Drifting", "description": "Shark maint"},
+            {"title": "Enjoy the beach", "description": "The most intelligent employer"},
+            {"title": "Drifting", "description": "Shark maint"}
+        ]
+    },
+    "fotos": {
+        "title": "Fotos",
+        "description": "",
         "background": "https://via.placeholder.com/1920x1080/00FF00/808080?text=Parallax+3",
         "projects": [
             {"title": "Foto 1", "image": "https://via.placeholder.com/150", "description": "Descripción del proyecto 1"},
@@ -54,10 +63,13 @@
             {"title": "Foto 12", "image": "https://via.placeholder.com/150", "description": "Descripción del proyecto 2"}
         ]
     },
-    "contacto": {
-        "title": "Contacto",
-        "description": "Ponte en contacto con nosotros",
-        "background": "https://img.freepik.com/foto-gratis/diseno-interiores-marcos-fotos-sofa_23-2149385435.jpg?t=st=1724227843~exp=1724231443~hmac=6f0946ebf06498448469fd5d0def1be633711160f6b0ac86c1d0e646c4415c4b&w=996"
+    "contact": {
+        "title": "Contact",
+        "description": "",
+        "background": "https://img.freepik.com/foto-gratis/diseno-interiores-marcos-fotos-sofa_23-2149385435.jpg?t=st=1724227843~exp=1724231443~hmac=6f0946ebf06498448469fd5d0def1be633711160f6b0ac86c1d0e646c4415c4b&w=996",
+        "phone": "+1 234 567 890",
+        "email": "contact@ejemplo.com",
+        "img": "https://img.freepik.com/vector-premium/perfil-avatar-hombre-icono-redondo_24640-14044.jpg?w=996"
     },
     "footer": {
         "text": "Todos los derechos reservados."

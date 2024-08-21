@@ -9,64 +9,78 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul id="navbar"></ul>
     </nav>
 
-    <!-- Sección 1: Inicio -->
-    <div id="inicio" class="parallax-section">
+    <!-- Sección 1: home -->
+    <div id="home" class="parallax-section">
         <div class="content">
-            <h1 id="inicio-title"></h1>
-            <p id="inicio-description"></p>
+            <h1 id="home-title"></h1>
+            <p id="home-description"></p>
         </div>
     </div>
 
-    <!-- Sección 2: Nosotros -->
-    <div id="nosotros" class="content-section">
-        <h2 id="nosotros-title"></h2>
-        <p id="nosotros-description"></p>
-        <div id="nosotros-grid" class="grid-container"></div>
-        <p id="nosotros-detalle"></p>
-    </div>
-
-    <!-- Sección 3: Servicios -->
-    <div id="servicios" class="parallax-section">
-        <div class="content">
-            <h2 id="servicios-title"></h2>
-            <p id="servicios-description"></p>
+    <!-- Sección 2: offer -->
+    <div id="offer" class="content-section">
+        <h2 id="offer-title"></h2>
+        <p id="offer-description"></p>
+        <div id="offer-grid" class="grid-container"></div>
+        <p id="offer-detail"></p>
+        <div class="map-container">
+            <iframe id="map-frame"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </div>
-    <div class="map-container">
-        <iframe id="map-frame"
-            width="600"
-            height="450"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </div>
 
-    <!-- Sección 4: Portfolio -->
-    <div id="portfolio" class="parallax-section">
+    <!-- Sección 4: fotos -->
+    <div id="fotos" class="parallax-section">
         <div class="content">
-            <h2 id="portfolio-title"></h2>
-            <p id="portfolio-description"></p>
+            <h2 id="fotos-title"></h2>
+            <p id="fotos-description"></p>
         </div>
     </div>
 
     <div class="content-section">
-        <div id="portfolio-grid" class="portfolio-grid"></div>
+        <div id="fotos-grid" class="fotos-grid"></div>
     </div>
 
-    <!-- Sección 5: Contacto -->
-    <div id="contacto" class="parallax-section">
+    <!-- Sección 3: conditions -->
+    <div id="conditions" class="parallax-section">
         <div class="content">
-            <h2 id="contacto-title"></h2>
-            <p id="contacto-description"></p>
+            <h2 id="conditions-title"></h2>
+            <p id="conditions-description"></p>
         </div>
     </div>
+
+    <div class="content-section">
+        <div id="conditions-items" class="conditions"></div>
+    </div>
+
+    
+
+    <!-- Sección 5: contact -->
+    <div id="contact" class="parallax-section">
+        <div class="content">
+            <h2 id="contact-title"></h2>
+            <p id="contact-description"></p>
+        </div>
+    </div>
+
+    
     
     <div class="content-section">
+        <div class="contact-photo">
+            <img id="contact-img" alt="Foto de contacto" class="contact-image">
+        </div>
+        <p><strong>Phone:</strong> <span id="telefono"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
         
     
         <form class="contact-form">
@@ -85,23 +99,34 @@
     
     <!-- Footer -->
     <footer class="footer">
-        <p id="footer-text"></p>
-    </footer>
+        <div class="footer-content">
+            <div class="footer-section credits">
+                <h3>Credits</h3>
+                <p>This website has been developed by <strong>External Company Name</strong>. If you are interested in hiring our services for the development of your own website, please visit contact us at +34 653 741 880 or email lluisrc@gmail.com</p>
+                <p>To get more information, please take a look our web site  <a href="https://www.empresa-externa.com">www.empresa-externa.com</a> </p>
+            </div>
+        </div>
     
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p id="footer-text"></p>
+        <div class="footer-bottom">
+            <p>&copy; Company Name. All rights reserved.</p>
+            <p><a href="politica-privacidad.html">Privacy Policy</a> | <a href="terminos-condiciones.html">Terms and Conditions</a></p>
+        </div>
     </footer>
+            
 
     <!-- Script para cargar el JSON -->
     <script>
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
+        }
         // Cargar el JSON y actualizar el DOM
         fetch('data.json')
         .then(response => response.json())
         .then(data => {
             // Navbar
             const navbar = document.getElementById('navbar');
+            const footernavbar = document.getElementById('footernavbar');
             data.navbar.forEach(item => {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
@@ -111,47 +136,65 @@
                 navbar.appendChild(li);
             });
 
-            // Sección Inicio
-            document.getElementById('inicio-title').textContent = data.inicio.title;
-            document.getElementById('inicio-description').textContent = data.inicio.description;
-            document.getElementById('inicio').style.backgroundImage = `url(${data.inicio.background})`;
+            // Sección home
+            document.getElementById('home-title').textContent = data.home.title;
+            document.getElementById('home-description').textContent = data.home.description;
+            document.getElementById('home').style.backgroundImage = `url(${data.home.background})`;
 
-            // Sección Nosotros
-            document.getElementById('nosotros-title').textContent = data.nosotros.title;
-            document.getElementById('nosotros-description').textContent = data.nosotros.description;
-            document.getElementById('nosotros-detalle').textContent = data.nosotros.detalle;
-            const nosotrosGrid = document.getElementById('nosotros-grid');
-            data.nosotros.grid.forEach(item => {
+            // Sección offer
+            document.getElementById('offer-title').textContent = data.offer.title;
+            document.getElementById('offer-description').textContent = data.offer.description;
+            document.getElementById('offer-detail').textContent = data.offer.detail;
+            document.getElementById('map-frame').src = data.offer.map.src
+
+            const offerGrid = document.getElementById('offer-grid');
+            data.offer.grid.forEach(item => {
                 const div = document.createElement('div');
                 div.classList.add('grid-item');
                 div.innerHTML = `<h3>${item.title}</h3><p>${item.description}</p>`;
-                nosotrosGrid.appendChild(div);
+                offerGrid.appendChild(div);
             });
 
-            // Sección Servicios
-            document.getElementById('servicios-title').textContent = data.servicios.title;
-            document.getElementById('servicios-description').textContent = data.servicios.description;
-            document.getElementById('servicios').style.backgroundImage = `url(${data.servicios.background})`;
-            document.getElementById('map-frame').src = data.servicios.map.src
+            
 
+            // Sección fotos
+            document.getElementById('fotos-title').textContent = data.fotos.title;
+            document.getElementById('fotos-description').textContent = data.fotos.description;
+            document.getElementById('fotos').style.backgroundImage = `url(${data.fotos.background})`;
 
-            // Sección Portfolio
-            document.getElementById('portfolio-title').textContent = data.portfolio.title;
-            document.getElementById('portfolio-description').textContent = data.portfolio.description;
-            document.getElementById('portfolio').style.backgroundImage = `url(${data.portfolio.background})`;
-
-            const portfolioGrid = document.getElementById('portfolio-grid');
-            data.portfolio.projects.forEach(item => {
+            const fotosGrid = document.getElementById('fotos-grid');
+            data.fotos.projects.forEach(item => {
                 const div = document.createElement('div');
-                div.classList.add('portfolio-item');
+                div.classList.add('fotos-item');
                 div.innerHTML = `<img src="${item.image}" alt="${item.title}"><h3>${item.title}</h3><p>${item.description}</p>`;
-                portfolioGrid.appendChild(div);
+                fotosGrid.appendChild(div);
             });
 
-            // Sección Contacto
-            document.getElementById('contacto-title').textContent = data.contacto.title;
-            document.getElementById('contacto-description').textContent = data.contacto.description;
-            document.getElementById('contacto').style.backgroundImage = `url(${data.contacto.background})`;
+            // Sección conditions
+            document.getElementById('conditions-title').textContent = data.conditions.title;
+            document.getElementById('conditions-description').textContent = data.conditions.description;
+            document.getElementById('conditions').style.backgroundImage = `url(${data.conditions.background})`;
+
+            const conditionsItems = document.getElementById('conditions-items');
+            data.conditions.services.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('service-item');
+                div.innerHTML = `<h3>${item.title}</h3><p>${item.description}</p>`;
+                conditionsItems.appendChild(div);
+            });
+
+            // Sección contact
+            document.getElementById('contact-title').textContent = data.contact.title;
+            document.getElementById('contact-description').textContent = data.contact.description;
+            document.getElementById('contact').style.backgroundImage = `url(${data.contact.background})`;
+            document.getElementById('telefono').textContent = data.contact.phone;
+            document.getElementById('email').textContent = data.contact.email;
+            document.getElementById('contact-img').src = data.contact.img
+
+
+            
+
+
 
             // Footer
             document.getElementById('footer-text').textContent = data.footer.text;
